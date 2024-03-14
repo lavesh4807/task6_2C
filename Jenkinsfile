@@ -19,6 +19,21 @@ pipeline {
                 echo "Running unit tests"
                 echo "Running integration tests"
             }
+            post {
+                
+                success {
+                    emailext  subject: 'Unit Test Status - Success', 
+                              body: 'Unit Test has been completed successfully.', 
+                              to: "garglavesh96960@gmail.com",
+                              attachLog: true
+                }
+                failure {
+                    emailext subject: 'Unit Test Status - Failure', 
+                              body: 'Unit Test has failed.', 
+                             to: "garglavesh96960@gmail.com",
+                              attachLog: true
+                }
+            }
         }
         stage('Code Quality Check') {
             steps {
