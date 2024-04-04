@@ -40,7 +40,6 @@ pipeline {
                 echo "Checking the quality of the code"
             }
            
-            }
         }
         stage('Deploy') {
             steps {
